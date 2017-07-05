@@ -12,21 +12,25 @@ export class TaskDetailComponent implements OnInit {
   @Input() task: Task;
 
   editMode: boolean;
+  prid: string;
 
   constructor(private taskService: TaskService,
               private route: ActivatedRoute,
               private router: Router) {
-    this.editMode = false;
-    this.task = null;
   }
 
   ngOnInit(): void {
+    this.prid = this.route.snapshot.paramMap.get('id');
+    if (this.prid !== null) {
+      this.route.paramMap.switchMap((params: ParamMap) =>
+        this.taskService.getTask(+params.get('id')))
+        .subscribe(task => this.task = task);
+      this.editMode = true;
+    } else {
+      this.task = new Task();
+      this.editMode = false;
+    }
 
-    this.route.paramMap.switchMap((params: ParamMap) =>
-      this.taskService.getTask(+params.get('id')))
-      .subscribe(task => this.task = task);
-
-    this.editMode = this.task !== null;
 
   }
 

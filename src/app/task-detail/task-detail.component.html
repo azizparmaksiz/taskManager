@@ -16,9 +16,9 @@
     <div class="form-group">
       <label class="control-label col-md-3">Finished</label>
       <div class="col-md-7">
-        <input type="radio" class="col-sm-1" name="" [(ngModel)]="task.isCompleted" value="true" />
+        <input type="radio" class="col-sm-1" name="" [(ngModel)]="task.isCompleted"   [checked]="task.isCompleted" [value]="true" />
         <div class="col-sm-1">Yes</div>
-        <input type="radio" class="col-sm-1" name="" [(ngModel)]="task.isCompleted" value="false" />
+        <input type="radio" class="col-sm-1" name="" [(ngModel)]="task.isCompleted" [checked]="!task.isCompleted" [value]="false" />
         <div class="col-sm-1">No</div>
       </div>
     </div>
