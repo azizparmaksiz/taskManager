@@ -11,9 +11,10 @@ import {InMemoryDataService} from './in-memory-data.service';
 
 import {RouterModule, Routes} from '@angular/router';
 import {TaskService} from './task.service';
-import {FormsModule} from "@angular/forms";
+import {FormsModule} from '@angular/forms';
+import { HomeComponent } from './home/home.component';
 const routes: Routes = [
-  {path: '', redirectTo: '/', pathMatch: 'full'},
+  {path: '', component: HomeComponent},
   {path: 'allTask', component: TaskComponent},
   {path: 'newTask', component: TaskDetailComponent},
   {path: 'detail/:id', component: TaskDetailComponent}
@@ -24,7 +25,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     TaskComponent,
-    TaskDetailComponent
+    TaskDetailComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

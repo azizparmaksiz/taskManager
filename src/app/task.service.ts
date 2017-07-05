@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
+import {Injectable} from "@angular/core";
 
-import {Headers, Http} from '@angular/http';
+import {Headers, Http} from "@angular/http";
 
-import 'rxjs/add/operator/toPromise';
-import {Task} from './task/task';
+import "rxjs/add/operator/toPromise";
+import {Task} from "./task/task";
 @Injectable()
 export class TaskService {
   private tasksUrl = 'api/tasks';  // URL to web
@@ -38,6 +38,23 @@ export class TaskService {
     return this.http.get(url)
       .toPromise()
       .then(response => response.json().data as Task)
+      .catch(this.handleError);
+  }
+
+  createTask(task: Task): Promise<Task> {
+    return this.http
+      .post(this.tasksUrl, JSON.stringify(task), {headers: this.headers})
+      .toPromise()
+      .then(() => task)
+      .catch(this.handleError);
+  }
+
+  updateTask(task: Task): Promise<Task> {
+    const url = `${this.tasksUrl}/${task.id}`;
+    return this.http
+      .put(url, JSON.stringify(task), {headers: this.headers})
+      .toPromise()
+      .then(() => task)
       .catch(this.handleError);
   }
 }
