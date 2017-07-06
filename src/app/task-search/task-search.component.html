@@ -1,0 +1,9 @@
+<div class="ui-dropdown">
+
+  <input class="form-control" #searchBox id="search-box" (keyup)="search(searchBox.value)"  placeholder="Search Task"/>
+    <ul class="ui-dropdown-items">
+     <li  *ngFor="let task of taskArray | async"  (click)="gotoDetail(task)" class="ui-dropdown-item" >
+       {{task.name}}
+     </li>
+    </ul>
+</div>

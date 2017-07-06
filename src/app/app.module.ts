@@ -13,6 +13,12 @@ import {RouterModule, Routes} from '@angular/router';
 import {TaskService} from './task.service';
 import {FormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { TaskSearchComponent } from './task-search/task-search.component';
+import {TaskSearchService} from './task-search.service';
+import {AutoCompleteModule, CodeHighlighterModule, DropdownModule, TabViewModule} from 'primeng/primeng';
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import {Ng2SearchPipeModule} from "./ng2searchpipe/ng2-filter.module";
+
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'allTask', component: TaskComponent},
@@ -26,16 +32,24 @@ const routes: Routes = [
     AppComponent,
     TaskComponent,
     TaskDetailComponent,
-    HomeComponent
+    HomeComponent,
+    TaskSearchComponent,
+    AutocompleteComponent,
+
   ],
   imports: [
     BrowserModule,
+    DropdownModule,
     FormsModule,
     RouterModule.forRoot(routes),
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
+    AutoCompleteModule,
+    TabViewModule,
+    CodeHighlighterModule,
+    Ng2SearchPipeModule
   ],
-  providers: [TaskService],
+  providers: [TaskService, TaskSearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

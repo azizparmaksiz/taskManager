@@ -1,4 +1,12 @@
 <div class="container text-center" id="tasksDiv">
+  <div class="container-fluid">
+    <app-task-search></app-task-search>
+    <app-autocomplete></app-autocomplete>
+<p></p>
+    <input class="form-control" type="text" placeholder="table filter" [(ngModel)]="term">
+  </div>
+
+
   <h3>My Tasks</h3>
   <hr>
   <div class="table-responsive">
@@ -15,8 +23,8 @@
       </thead>
       <tbody>
 
-      <tr *ngFor="let task of taskArray">
-      <td>{{task.id}}</td>
+      <tr *ngFor="let task of taskArray | filter:term  ">
+        <td>{{task.id}}</td>
         <td>{{task.name}}</td>
         <td>{{task.description}}</td>
         <td>{{task.isCompleted}}</td>
@@ -30,4 +38,6 @@
     </table>
   </div>
 </div>
+
+
 
