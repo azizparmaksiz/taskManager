@@ -1,31 +1,32 @@
 <div class="container text-center">
   <h3>Manage Task</h3>
   <hr>
-      <div class="form-group">
-      <label class="control-label col-md-3">Name</label>
-      <div class="col-md-7">
-        <input type="text" class="form-control" [(ngModel)]="task.name" />
-      </div>
+  <div class="form-group">
+    <label class="control-label col-md-3">Name</label>
+    <div class="col-md-7">
+      <input type="text" class="form-control" [(ngModel)]="task.name"/>
     </div>
-    <div class="form-group">
-      <label class="control-label col-md-3">Description</label>
-      <div class="col-md-7">
-        <input type="text" class="form-control" [(ngModel)]="task.description" />
-      </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-md-3">Description</label>
+    <div class="col-md-7">
+      <input type="text" class="form-control" [(ngModel)]="task.description"/>
     </div>
-    <div class="form-group">
-      <label class="control-label col-md-3">Finished</label>
-      <div class="col-md-7">
-        <input type="radio" class="col-sm-1" name="" [(ngModel)]="task.isCompleted"   [checked]="task.isCompleted" [value]="true" />
-        <div class="col-sm-1">Yes</div>
-        <input type="radio" class="col-sm-1" name="" [(ngModel)]="task.isCompleted" [checked]="!task.isCompleted" [value]="false" />
-        <div class="col-sm-1">No</div>
-      </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-md-3">Finished</label>
+    <div class="col-md-7">
+      <input type="radio" class="col-sm-1" name="" [(ngModel)]="task.finished" [checked]="task.finished"
+             [value]="true"/>
+      <div class="col-sm-1">Yes</div>
+      <input type="radio" class="col-sm-1" name="" [(ngModel)]="task.finished" [checked]="!task.finished"
+             [value]="false"/>
+      <div class="col-sm-1">No</div>
     </div>
-    <div class="form-group">
-      <input *ngIf="!editMode" type="button" class="btn btn-primary" value="Save" (click)="saveTask(task)"/>
-      <input *ngIf="editMode" type="button"  class="btn btn-primary" value="Update" (click)="updateTask(task)"/>
-      <input  type="button"  class="btn btn-primary" value="Cancel" (click)="cancel()"/>
-    </div>
-  <span>{{name}}</span>
+  </div>
+  <div class="form-group">
+    <input *ngIf="!editMode" type="button" class="btn btn-primary" value="Save" (click)="saveTask(task)"/>
+    <input *ngIf="editMode" type="button" class="btn btn-primary" value="Update" (click)="updateTask(task)"/>
+    <input type="button" class="btn btn-primary" value="Cancel" (click)="cancel()"/>
+  </div>
 </div>

@@ -1,3 +1,4 @@
-<p-autoComplete [(ngModel)]="task" [suggestions]="filteredTasksSingle" (completeMethod)="filterTaskSingle($event)" field="name" [size]="30"
+<p-autoComplete [(ngModel)]="task" [suggestions]="filteredTasksSingle" (completeMethod)="filterTaskSingle($event)"
+                field="name" [size]="30"
                 placeholder="Search Tasks (by prime ng)" [minLength]="1"></p-autoComplete>
 <span style="margin-left:10px">Task: {{task ? task.name||task : 'none'}}</span>

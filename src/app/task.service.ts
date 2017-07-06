@@ -4,19 +4,26 @@ import {Headers, Http} from "@angular/http";
 
 import "rxjs/add/operator/toPromise";
 import {Task} from "./task/task";
+import {Observable} from "rxjs/Observable";
 @Injectable()
 export class TaskService {
-  private tasksUrl = 'api/tasks';  // URL to web
+  // private tasksUrl = 'api/tasks';  // URL to web enable it when you will use in memory web api
+  private tasksUrl = 'http://localhost:9090/tasks';  // URL to web
   constructor(private http: Http) {
   }
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  getAllTask(): Promise<Task[]> {
-    return this.http.get(this.tasksUrl)
-      .toPromise()
-      .then(response => response.json().data as Task[])
-      .catch(this.handleError);
+  // getAllTask(): Promise<Task[]> {
+  //   return this.http.get(this.tasksUrl)
+  //     .toPromise()
+  //     .then(response => response.json().data as Task[])
+  //     .catch(this.handleError);
+  // }
+
+  getAllTask(): Observable<Task[]> {
+    return this.http.get(this.tasksUrl).map(response => response.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
   private handleError(error: any): Promise<any> {
@@ -37,7 +44,7 @@ export class TaskService {
     const url = `${this.tasksUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json().data as Task)
+      .then(response => response.json() as Task)
       .catch(this.handleError);
   }
 

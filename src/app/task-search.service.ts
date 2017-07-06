@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {Task} from './task/task';
@@ -6,11 +6,14 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class TaskSearchService {
 
-  constructor(private http: Http) {}
+  constructor(private http: Http) {
+  }
+
+  private tasksUrl = 'http://localhost:9090/tasks';  // URL to web
 
   search(term: string): Observable<Task[]> {
     return this.http
-      .get(`api/tasks/?name=${term}`)
-      .map(response => response.json().data as Task[]);
+      .get(this.tasksUrl + `/?name=${term}`)
+      .map(response => response.json());
   }
 }

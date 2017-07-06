@@ -1,16 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-
-import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
+import {Component, OnInit} from "@angular/core";
+import {Router} from "@angular/router";
 // Observable class extensions
-import 'rxjs/add/observable/of';
+import "rxjs/add/observable/of";
 // Observable operators
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import {TaskSearchService} from '../task-search.service';
-import {Task} from '../task/task';
+import "rxjs/add/operator/catch";
+import "rxjs/add/operator/debounceTime";
+import "rxjs/add/operator/distinctUntilChanged";
+import {Task} from "../task/task";
 import {TaskService} from "../task.service";
 
 @Component({
@@ -20,23 +16,21 @@ import {TaskService} from "../task.service";
 })
 export class AutocompleteComponent implements OnInit {
 
-  taskArray: Observable<Task[]>;
-  private searchTerms = new Subject<string>();
-
   constructor(private taskSearchService: TaskService,
               private router: Router) {
   }
+
   ngOnInit(): void {
 
   }
 
 
-   filteredTasksSingle: any[];
+  filteredTasksSingle: any[];
 
 
   filterTaskSingle(event) {
     const query = event.query;
-    this.taskSearchService.getAllTask().then(tasks => {
+    this.taskSearchService.getAllTask().subscribe(tasks => {
       this.filteredTasksSingle = this.filterTask(query, tasks);
     });
   }

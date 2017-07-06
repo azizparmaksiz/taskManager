@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform, Injectable} from '@angular/core';
+import {Injectable, Pipe, PipeTransform} from "@angular/core";
 
 @Pipe({
   name: 'filter',
@@ -25,6 +25,7 @@ export class Ng2SearchPipe implements PipeTransform {
     });
 
   }
-}/**
+}
+/**
  * Created by seva on 7/6/17.
  */

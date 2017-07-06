@@ -1,16 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Component, OnInit} from "@angular/core";
+import {Router} from "@angular/router";
 
-import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
+import {Observable} from "rxjs/Observable";
+import {Subject} from "rxjs/Subject";
 // Observable class extensions
-import 'rxjs/add/observable/of';
+import "rxjs/add/observable/of";
 // Observable operators
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import {TaskSearchService} from '../task-search.service';
-import {Task} from '../task/task';
+import "rxjs/add/operator/catch";
+import "rxjs/add/operator/debounceTime";
+import "rxjs/add/operator/distinctUntilChanged";
+import {TaskSearchService} from "../task-search.service";
+import {Task} from "../task/task";
 
 @Component({
   selector: 'app-task-search',
